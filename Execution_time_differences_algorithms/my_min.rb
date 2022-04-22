@@ -17,15 +17,14 @@ require 'benchmark'
 # use of linear search algorithim 
 
 def bubble_search_why?(list)
-   
     target=0
     list.each_with_index do |ele1,i|
         target = ele1 if ele1 < target
-    list.each_with_index do |ele2,j|
-        if target > ele2
-            target=ele2
+        list.each_with_index do |ele2,j|
+            if target > ele2
+                target=ele2
+            end
         end
-    end
     end
     return target 
 end

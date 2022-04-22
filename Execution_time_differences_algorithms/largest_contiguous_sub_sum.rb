@@ -34,11 +34,11 @@ require 'benchmark'
     # Discuss the time complexity of this solution. most likely O(N^2)
     
     def largest_contiguous_subsum(list)
-            subArray=[]
+        subArray=[]
         list.each_with_index do |num1,i|
-         list.each_with_index do |num2,j|
-            subArray<<[num1,num2] if i < j
-         end
+            list.each_with_index do |num2,j|
+                subArray<<[num1,num2] if i < j
+            end
         end
         subArray.map  {|sub| sub.sum}.max
     end

@@ -1,3 +1,5 @@
+require 'byebug'
+
 # Anagrams
 # Our goal today is to write a method that determines if
 #  two given words are anagrams. This means that the letters
@@ -18,49 +20,55 @@
 # Write a method #first_anagram? that will generate and store all the possible anagrams of 
 # the first string. Check if the second string is one of these.
 
-def first_anagram?(string_1,string_2)
-    s1=string_1.split("")
-    perm_s1=[s1]
-    i=1
-    while i<s1.length
-        letter=s1.shift
-        # s1.push(letter)
-        s2=s1.drop(i)
-        perm_s1<<s2.insert(i,letter)
 
-        i+=1
+# WIP first try
+
+# def first_anagram?(string_1,string_2)
+#     s1 = string_1.split("") #["a", "b", "c"]
+#     perm_s1 = []
+#     s2 = s1[1..-1]  
+#     letter = s1.first
+# debugger
+#     (1...string_1.length-1).each do |i| #i =1
+#         s2.insert(i,letter) # "b + a + c"
+#         # letter = s2[i]
+#         perm_s1 << s2
+#         end
+# perm_s1 + [string_1.split("")]
+# end
+
+def first_anagram?(string_1,string_2)
+    s1 = string_1.split("") 
+    arr = []
+
+    (0...s1.length-1).each do |i|
+        s1[i], s1[i+1] = s1[i+1], s1[i]
+        arr << s1 
     end
-return perm_s1
+
+return arr
+
+
 end
+
+
 
 p first_anagram?("abc", "sally")
 
+def perm_str(str)
+    s1 = str.split("")
+    perm_str = []
+    n=str.length
 
+    n.times do 
+        perm_str<< s1.push(s1.shift).join("")
+    end
+return perm_str.uniq
+end
 
-# def perm_str(str)
-#     s1 = str.split("")
-#     perm_str = []
-#     n=str.length
-#     i=0
-# while i < 
-
-
-
-#     n.times do 
-#         perm_str<< s1.push(s1.shift).join("")
-#     end
-
-
-#     i+=1
-# end
-
-# # n.times do |i|
-# # cut=i%s1.length
-# # perm_str<<(s1.drop(cut)+s1.take(cut)).join("")
-# # end
-
-
-# return perm_str.uniq
+# n.times do |i|
+# cut=i%s1.length
+# perm_str<<(s1.drop(cut)+s1.take(cut)).join("")
 # end
 
 # p perm_str("gizmo")
