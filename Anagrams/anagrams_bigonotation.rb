@@ -4,8 +4,8 @@
 #   in one word can be rearranged to form the other word. 
 #   For example:
 
-anagram?("gizmo", "sally")    #=> false
-anagram?("elvis", "lives")    #=> true
+# anagram?("gizmo", "sally")    #=> false
+# anagram?("elvis", "lives")    #=> true
 # Assume that there is no whitespace or punctuation in the given strings.
 
 
@@ -17,6 +17,54 @@ anagram?("elvis", "lives")    #=> true
 # Phase I:
 # Write a method #first_anagram? that will generate and store all the possible anagrams of 
 # the first string. Check if the second string is one of these.
+
+def first_anagram?(string_1,string_2)
+    s1=string_1.split("")
+    perm_s1=[s1]
+    i=1
+    while i<s1.length
+        letter=s1.shift
+        # s1.push(letter)
+        s2=s1.drop(i)
+        perm_s1<<s2.insert(i,letter)
+
+        i+=1
+    end
+return perm_s1
+end
+
+p first_anagram?("abc", "sally")
+
+
+
+# def perm_str(str)
+#     s1 = str.split("")
+#     perm_str = []
+#     n=str.length
+#     i=0
+# while i < 
+
+
+
+#     n.times do 
+#         perm_str<< s1.push(s1.shift).join("")
+#     end
+
+
+#     i+=1
+# end
+
+# # n.times do |i|
+# # cut=i%s1.length
+# # perm_str<<(s1.drop(cut)+s1.take(cut)).join("")
+# # end
+
+
+# return perm_str.uniq
+# end
+
+# p perm_str("gizmo")
+
 
 # Hints:
 
