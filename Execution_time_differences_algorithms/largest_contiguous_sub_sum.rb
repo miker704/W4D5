@@ -1,3 +1,5 @@
+require 'benchmark'
+
 # Largest Contiguous Sub-sum
 # You have an array of integers and you want to find 
 # the largest contiguous (together in sequence) sub-sum. 

@@ -59,7 +59,7 @@ p linear_search(list)  # =>  -5
 
 # time complexity is O(n)
 
-randomArray=(1..10000).to_a.shuffle
+randomArray=(1..100000).to_a.shuffle
 
 Benchmark.bmbm do |x|
     x.report("bubblesearch") { bubble_search_why?(list) }
