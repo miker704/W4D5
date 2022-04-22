@@ -31,14 +31,23 @@ require 'benchmark'
     # and finds all sub-arrays using nested loops. First make an
     #  array to hold all sub-arrays. Then find the sums of each 
     #  sub-array and return the max.
-    # Discuss the time complexity of this solution.
+    # Discuss the time complexity of this solution. most likely O(N^2)
     
     def largest_contiguous_subsum(list)
+            subArray=[]
+        list.each_with_index do |num1,i|
+         list.each_with_index do |num2,j|
+            subArray<<[num1,num2]
+         end
+        end
 
+        subArray.each do |subArr|
+            
+        end
 
     end
 
-
+    
 
     # Phase II
     # Let's make a better version. Write a new function using O(n) time with O(1) memory. 
@@ -59,8 +68,6 @@ require 'benchmark'
         x.report("largest_contigous_subsum(list3)") { largest_contiguous_subsum(list3) }
         x.report("largest_contigous_subsum(random_list)") { largest_contiguous_subsum(random_list) }
 
-        
-    
     
       end
 
