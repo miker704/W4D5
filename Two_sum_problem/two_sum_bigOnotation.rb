@@ -1,15 +1,35 @@
+require 'benchmark'
 # two_sum?
 # Given an array of unique integers and a target sum,
 # determine whether any two integers in the array sum to that amount.
 
 def two_sum?(arr, target_sum)
     # your code here...
+    (0...arr.length-1).each do |i|
+
+        return true if arr[i]+arr[i+1]==target_sum
+
+    end
+    return false
 end
 
 arr = [0, 1, 5, 7]
-two_sum?(arr, 6) # => should be true
-two_sum?(arr, 10) # => should be false
+p two_sum?(arr, 6) # => should be true
+p two_sum?(arr, 10) # => should be false
 
+
+def hash_two_sum?(arr,target)
+    hash={}
+
+    arr.each do |ele|
+        return true if hash[target-ele]
+        hash[ele]=true
+    end
+    return false
+end
+
+p hash_two_sum?(arr, 6) # => should be true
+p hash_two_sum?(arr, 10) # => should be false
 
 
 
@@ -70,3 +90,21 @@ two_sum?(arr, 10) # => should be false
 
 # Bonus (come back to this once you have completed the Windowed-Max-Range exercises)
 # See if you can extend your solution of two_sum? to solve four_sum?.
+
+random_array=(0..10000).to_a.shuffle
+
+Benchmark.bmbm do |x|
+  
+
+
+    x.report("normal two_sum") { two_sum?(arr,6) }
+    x.report("normal two_sum") { two_sum?(arr,10) }
+    x.report("normal two_sum") { two_sum?(random_array,100) }
+
+    x.report("hash two_sum") { hash_two_sum?(arr,6) }
+    x.report("hash two_sum") { hash_two_sum?(arr,10) }
+    x.report("hash two_sum") { hash_two_sum?(random_array,100) }
+
+
+   
+  end
